@@ -10,11 +10,6 @@ Because nums[0] + nums[1] = 2 + 7 = 9,
 return [0, 1].
 */
 
-public static void main(String[] args)
-{
-
-}
-
 public static int[] twoSum(int[] nums, int target)
 {
 	for (int i = 0; i < nums.length; i++)
@@ -30,4 +25,3 @@ public static int[] twoSum(int[] nums, int target)
 	// if go through all possibilities and no solution found
 	throw new IllegalArgumentException("No Two Sum solution possible");
 }
-
