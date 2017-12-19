@@ -6,25 +6,32 @@ You may assume that the array is non-empty and the majority element always exist
 
 class Solution {
     public int majorityElement(int[] nums) {
-        int majLength = nums.length / 2;
+        HashMap<Integer, Integer> map = new HashMap<>();
         
-        for (int n : nums)
+        for (int i = 0; i < nums.length; i++)
         {
-            int count = 0;
-            for (int i = 0; i < nums.length; i++)
+            if (map.containsKey(nums[i]))
             {
-                if (n == nums[i])
-                {
-                    count++;
-                }
+                map.put(nums[i], map.get(nums[i]) + 1);
             }
-            
-            if (count > majLength)
+            else
             {
-                return n;
+                map.put(nums[i], 1);
             }
         }
         
-        return -1;
+        int majorityElement = -1;
+        int majorityFrequency = 0;
+        
+        for (Map.Entry<Integer, Integer> entry : map.entrySet())
+        {
+            if (entry.getValue() > majorityFrequency)
+            {
+                majorityFrequency = entry.getValue();
+                majorityElement = entry.getKey();
+            }
+        }
+        
+        return majorityElement;
     }
 }
